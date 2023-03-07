@@ -27,6 +27,14 @@
 - (void)hyperBidImpressionFromJSON:(NSString *)jsonString;
 - (void)adMobImpressionFromJSON:(NSString *)jsonString;
 - (void)ironSourceImpressionFromJSON:(NSString *)jsonString;
+- (void)updatePostbackConversionValue:(int)conversionValue;
+- (void)updatePostbackConversionValue:(int)conversionValue
+                          coarseValue:(NSString*)coarseValue;
+- (void)updatePostbackConversionValue:(int)conversionValue
+                          coarseValue:(NSString*)coarseValue
+                           lockWindow:(BOOL)lockWindow;
+- (void)setCustomerUserId:(NSString *)userId;
+- (NSString *)getCustomerUserId;
 
 @end
 

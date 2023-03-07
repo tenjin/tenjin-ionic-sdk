@@ -75,4 +75,12 @@ public class Tenjin {
     public void eventAdImpressionTopOn(JSONObject json) {
         instance.eventAdImpressionTopOn(json);
     }
+
+    public void setCustomerUserId(String userId) {
+        instance.setCustomerUserId(userId);
+    }
+
+    public String getCustomerUserId() {
+        return instance.getCustomerUserId();
+    }
 }

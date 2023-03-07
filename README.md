@@ -104,5 +104,39 @@ Tenjin supports retrieving of attributes, which are required for developers to g
 
 :warning: **NOTE: Attribution Info is a paid feature, so please contact your Tenjin account manager if you are interested in.**
 
+### Customer User ID
+```javascript
+Tenjin.setCustomerUserId(userId)
+```
+Parameters:
+- `userId`: string
+
+```javascript
+Tenjin.getCustomerUserId()
+```
+Returns: `string`
+
+### Update SKAN Postback Conversion Value (iOS only)
+```javascript
+Tenjin.updatePostbackConversionValue(conversionValue)
+```
+Parameters:
+- `conversionValue`: number
+
+```javascript
+Tenjin.updatePostbackConversionValueCoarseValue(conversionValue, coarseValue)
+```
+Parameters:
+- `conversionValue`: number
+- `coarseValue`: string
+
+```javascript
+Tenjin.updatePostbackConversionValueCoarseValueLockWindow(conversionValue, coarseValue, lockWindow)
+```
+Parameters:
+- `conversionValue`: number
+- `coarseValue`: string
+- `lockWindow`: boolean
+
 ## Support
 If you have any issues with the plugin integration or usage, please contact us to support@tenjin.com
