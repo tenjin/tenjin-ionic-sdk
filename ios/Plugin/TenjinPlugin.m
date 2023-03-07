@@ -20,4 +20,9 @@ CAP_PLUGIN(TenjinPlugin, "Tenjin",
            CAP_PLUGIN_METHOD(eventAdImpressionHyperBid, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventAdImpressionIronSource, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventAdImpressionTopOn, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(updatePostbackConversionValue, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(updatePostbackConversionValueCoarseValue, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(updatePostbackConversionValueCoarseValueLockWindow, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(setCustomerUserId, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(getCustomerUserId, CAPPluginReturnPromise);
 )

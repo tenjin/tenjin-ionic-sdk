@@ -88,5 +88,30 @@
     [TenjinSDK topOnImpressionFromJSON:jsonString];
 }
 
+- (void)updatePostbackConversionValue:(int)conversionValue
+{
+    [TenjinSDK updatePostbackConversionValue:conversionValue];
+}
+
+- (void)updatePostbackConversionValue:(int)conversionValue coarseValue:(NSString *)coarseValue
+{
+    [TenjinSDK updatePostbackConversionValue:conversionValue coarseValue:coarseValue];
+}
+
+- (void)updatePostbackConversionValue:(int)conversionValue coarseValue:(NSString *)coarseValue lockWindow:(BOOL)lockWindow
+{
+    [TenjinSDK updatePostbackConversionValue:conversionValue coarseValue:coarseValue lockWindow:lockWindow];
+}
+
+- (void)setCustomerUserId:(NSString *)userId
+{
+    [TenjinSDK setCustomerUserId:userId];
+}
+
+- (NSString *)getCustomerUserId
+{
+    return [TenjinSDK getCustomerUserId];
+}
+
 @end
 

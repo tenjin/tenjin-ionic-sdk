@@ -11,18 +11,22 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.initialize(sdkKey)
+        call.resolve()
     }
     
     @objc func connect(_ call: CAPPluginCall) {
         implementation.connect()
+        call.resolve()
     }
     
     @objc func optIn(_ call: CAPPluginCall) {
         implementation.optIn()
+        call.resolve()
     }
 
     @objc func optOut(_ call: CAPPluginCall) {
         implementation.optOut()
+        call.resolve()
     }
 
     @objc func optInParams(_ call: CAPPluginCall) {
@@ -31,6 +35,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.opt(inParams: params)
+        call.resolve()
     }
 
     @objc func optOutParams(_ call: CAPPluginCall) {
@@ -39,6 +44,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.optOutParams(params)
+        call.resolve()
     }
 
     @objc func transaction(_ call: CAPPluginCall) {
@@ -50,6 +56,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.transaction(withProductName: productName, andCurrencyCode: currencyCode, andQuantity: quantity, andUnitPrice: unitPrice)
+        call.resolve()
     }
 
     @objc func eventWithName(_ call: CAPPluginCall) {
@@ -58,6 +65,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.sendEvent(withName: name)
+        call.resolve()
     }
 
     @objc func eventWithNameAndValue(_ call: CAPPluginCall) {
@@ -66,6 +74,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.sendEvent(withName: name, andEventValue: value)
+        call.resolve()
     }
 
     @objc func appendAppSubversion(_ call: CAPPluginCall) {
@@ -74,6 +83,7 @@ public class TenjinPlugin: CAPPlugin {
             return
         }
         implementation.appendAppSubversion(version as NSNumber)
+        call.resolve()
     }
 
     @objc func getAttributionInfo(_ call: CAPPluginCall) {
@@ -95,8 +105,10 @@ public class TenjinPlugin: CAPPlugin {
             let data =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let convertedString = String(data: data, encoding: .utf8)
             implementation.adMobImpression(fromJSON: convertedString)
+            call.resolve()
         } catch let error {
             print(error.localizedDescription)
+            call.reject("Failed to get json from call")
         }
     }
 
@@ -109,8 +121,10 @@ public class TenjinPlugin: CAPPlugin {
             let data =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let convertedString = String(data: data, encoding: .utf8)
             implementation.appLovinImpression(fromJSON: convertedString)
+            call.resolve()
         } catch let error {
             print(error.localizedDescription)
+            call.reject("Failed to get json from call")
         }
     }
 
@@ -123,8 +137,10 @@ public class TenjinPlugin: CAPPlugin {
             let data =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let convertedString = String(data: data, encoding: .utf8)
             implementation.hyperBidImpression(fromJSON: convertedString)
+            call.resolve()
         } catch let error {
             print(error.localizedDescription)
+            call.reject("Failed to get json from call")
         }
     }
 
@@ -137,6 +153,7 @@ public class TenjinPlugin: CAPPlugin {
             let data =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let convertedString = String(data: data, encoding: .utf8)
             implementation.ironSourceImpression(fromJSON: convertedString)
+            call.resolve()
         } catch let error {
             print(error.localizedDescription)
         }
@@ -151,8 +168,52 @@ public class TenjinPlugin: CAPPlugin {
             let data =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let convertedString = String(data: data, encoding: .utf8)
             implementation.topOnImpression(fromJSON: convertedString)
+            call.resolve()
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    @objc func updatePostbackConversionValue(_ call: CAPPluginCall) {
+        guard let conversionValue = call.getInt("conversionValue") else {
+            call.reject("Failed to get conversionValue from call")
+            return
+        }
+        implementation.updatePostbackConversionValue(Int32(conversionValue))
+        call.resolve()
+    }
+    
+    @objc func updatePostbackConversionValueCoarseValue(_ call: CAPPluginCall) {
+        guard let conversionValue = call.getInt("conversionValue"), let coarseValue = call.getString("coarseValue") else {
+            call.reject("Failed to get conversionValue or coarseValue from call")
+            return
+        }
+        implementation.updatePostbackConversionValue(Int32(conversionValue), coarseValue: coarseValue)
+        call.resolve()
+    }
+    
+    @objc func updatePostbackConversionValueCoarseValueLockWindow(_ call: CAPPluginCall) {
+        guard let conversionValue = call.getInt("conversionValue"), let coarseValue = call.getString("coarseValue"), let lockWindow = call.getBool("lockWindow") else {
+            call.reject("Failed to get conversionValue, coarseValue or lockWindow from call")
+            return
+        }
+        implementation.updatePostbackConversionValue(Int32(conversionValue), coarseValue: coarseValue, lockWindow: lockWindow)
+        call.resolve()
+    }
+    
+    @objc func setCustomerUserId(_ call: CAPPluginCall) {
+        guard let userId = call.getString("userId") else {
+            call.reject("Failed to get userId from call")
+            return
+        }
+        implementation.setCustomerUserId(userId)
+        call.resolve()
+    }
+    
+    @objc func getCustomerUserId(_ call: CAPPluginCall) {
+        if let userId = implementation.getCustomerUserId() {
+            let data: [String: Any] = ["userId": userId]
+            call.resolve(data)
         }
     }
 }
