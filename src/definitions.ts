@@ -18,6 +18,9 @@ export interface TenjinPlugin {
   optOut(): Promise<void>;
   optInParams(options: { params: string[] }): Promise<void>;
   optOutParams(options: { params: string[] }): Promise<void>;
+  optInOutUsingCMP(): Promise<void>;
+  optOutGoogleDMA(): Promise<void>;
+  optInGoogleDMA(): Promise<void>;
   transaction(options: { productName: string, currencyCode: string, quantity: number, unitPrice: number }): Promise<void>;
   eventWithName(options: { name: string }): Promise<void>;
   eventWithNameAndValue(options: { name: string, value: string }): Promise<void>;
@@ -28,9 +31,14 @@ export interface TenjinPlugin {
   eventAdImpressionHyperBid(options: { json: JSONObject }): Promise<void>;
   eventAdImpressionIronSource(options: { json: JSONObject }): Promise<void>;
   eventAdImpressionTopOn(options: { json: JSONObject }): Promise<void>;
+  eventAdImpressionTradPlus(options: { json: JSONObject }): Promise<void>;
+  eventAdImpressionCAS(options: { json: JSONObject }): Promise<void>;
   updatePostbackConversionValue(options: { conversionValue: number }): Promise<void>;
   updatePostbackConversionValueCoarseValue(options: { conversionValue: number, coarseValue: string }): Promise<void>;
   updatePostbackConversionValueCoarseValueLockWindow(options: { conversionValue: number, coarseValue: string, lockWindow: boolean }): Promise<void>;
   setCustomerUserId(options: { userId: string }): Promise<void>;
   getCustomerUserId(): Promise<void>;
+  setCacheEventSetting(options: { setting: boolean }): Promise<void>;
+  getAnalyticsInstallationId(): Promise<string | null>;
+  setGoogleDMAParameters(options: { adPersonalization: boolean, adUserData: boolean }): Promise<void>;
 }

@@ -34,6 +34,18 @@ public class Tenjin {
         instance.optOutParams(params);
     }
 
+    public void optInOutUsingCMP() {
+        instance.optInOutUsingCMP();
+    }
+
+    public void optOutGoogleDMA() {
+        instance.optOutGoogleDMA();
+    }
+
+    public void optInGoogleDMA() {
+        instance.optInGoogleDMA();
+    }
+
     public void transaction(String productName, String currencyCode, Integer quantity, Double unitPrice) {
         instance.transaction(productName, currencyCode, quantity, unitPrice);
     }
@@ -76,11 +88,31 @@ public class Tenjin {
         instance.eventAdImpressionTopOn(json);
     }
 
+    public void eventAdImpressionTradPlus(JSONObject json) {
+        instance.eventAdImpressionTradPlus(json);
+    }
+
+    public void eventAdImpressionCAS(JSONObject json) {
+        instance.eventAdImpressionCAS(json);
+    }
+
+    public void setCacheEventSetting(Boolean setting) {
+        instance.setCacheEventSetting(setting);
+    }
+
     public void setCustomerUserId(String userId) {
         instance.setCustomerUserId(userId);
     }
 
     public String getCustomerUserId() {
         return instance.getCustomerUserId();
+    }
+
+    public String getAnalyticsInstallationId() {
+        return instance.getAnalyticsInstallationId();
+    }
+
+    public void setGoogleDMAParameters(boolean adPersonalization, boolean adUserData) {
+        instance.setGoogleDMAParameters(adPersonalization, adUserData);
     }
 }

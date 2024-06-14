@@ -65,6 +65,24 @@ public class TenjinPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void optInOutUsingCMP(PluginCall call) {
+        implementation.optInOutUsingCMP();
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void optOutGoogleDMA(PluginCall call) {
+        implementation.optOutGoogleDMA();
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void optInGoogleDMA(PluginCall call) {
+        implementation.optInGoogleDMA();
+        call.resolve();
+    }
+
+    @PluginMethod
     public void transaction(PluginCall call) {
         implementation.transaction(
                 call.getString("productName"),
@@ -137,6 +155,24 @@ public class TenjinPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void eventAdImpressionTradPlus(PluginCall call) {
+        implementation.eventAdImpressionTradPlus(call.getObject("json"));
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void eventAdImpressionCAS(PluginCall call) {
+        implementation.eventAdImpressionCAS(call.getObject("json"));
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void setCacheEventSetting(PluginCall call) {
+        implementation.setCacheEventSetting(call.getBoolean("setting"));
+        call.resolve();
+    }
+
+    @PluginMethod
     public void setCustomerUserId(PluginCall call) {
         implementation.setCustomerUserId(call.getString("userId"));
         call.resolve();
@@ -150,20 +186,35 @@ public class TenjinPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void getAnalyticsInstallationId(PluginCall call) {
+        JSObject data = new JSObject();
+        data.put("installationId", implementation.getAnalyticsInstallationId());
+        call.resolve(data);
+    }
+
+    @PluginMethod
+    public void setGoogleDMAParameters(PluginCall call) {
+        boolean adPersonalization = call.getBoolean("adPersonalization", true);
+        boolean adUserData = call.getBoolean("adUserData", true);
+        implementation.setGoogleDMAParameters(adPersonalization, adUserData);
+        call.resolve();
+    }
+
+    @PluginMethod
     public void updatePostbackConversionValue(PluginCall call) {
-        Log.d("TENJIN","Method not available on Android");
+        Log.d("TENJIN", "Method not available on Android");
         call.resolve();
     }
 
     @PluginMethod
     public void updatePostbackConversionValueCoarseValue(PluginCall call) {
-        Log.d("TENJIN","Method not available on Android");
+        Log.d("TENJIN", "Method not available on Android");
         call.resolve();
     }
 
     @PluginMethod
     public void updatePostbackConversionValueCoarseValueLockWindow(PluginCall call) {
-        Log.d("TENJIN","Method not available on Android");
+        Log.d("TENJIN", "Method not available on Android");
         call.resolve();
     }
 }

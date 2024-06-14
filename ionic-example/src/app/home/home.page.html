@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tenjin Ionic Example
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="full" (click)="initTenjin()">
+    Initialize
+  </ion-button>
+  <ion-button expand="full" (click)="connectTenjin()">
+    Connect
+  </ion-button>
+  <ion-button expand="full" (click)="optIn()">
+    OptIn
+  </ion-button>
+  <ion-button expand="full" (click)="optOut()">
+    OptOut
+  </ion-button>
+  <ion-button expand="full" (click)="sendEvent()">
+    Send Event
+  </ion-button>
+  <ion-button expand="full" (click)="attributionInfo()">
+    Get Attribution Info
+  </ion-button>
+  <ion-button expand="full" (click)="sendImpression()">
+    Send ILRD
+  </ion-button>
+  <ion-button expand="full" (click)="updatePostback()">
+    Update SKAN Postback
+  </ion-button>
+  <ion-button expand="full" (click)="setCustomerUserId()">
+    Set Customer ID
+  </ion-button>
+  <ion-button expand="full" (click)="getCustomerUserId()">
+    Get Customer ID
+  </ion-button>
+</ion-content>

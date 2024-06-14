@@ -47,6 +47,21 @@ public class TenjinPlugin: CAPPlugin {
         call.resolve()
     }
 
+    @objc func optInOutUsingCMP(_ call: CAPPluginCall) {
+        implementation.optInOutUsingCMP()
+        call.resolve()
+    }
+
+    @objc func optOutGoogleDMA(_ call: CAPPluginCall) {
+        implementation.optOutGoogleDMA()
+        call.resolve()
+    }
+
+    @objc func optInGoogleDMA(_ call: CAPPluginCall) {
+        implementation.optInGoogleDMA()
+        call.resolve()
+    }
+
     @objc func transaction(_ call: CAPPluginCall) {
         guard let productName = call.getString("productName"),
               let currencyCode = call.getString("currencyCode"),
@@ -174,6 +189,38 @@ public class TenjinPlugin: CAPPlugin {
         }
     }
     
+    @objc func eventAdImpressionTradPlus(_ call: CAPPluginCall) {
+        guard let json = call.getAny("json") else {
+            call.reject("Failed to get json from call")
+            return
+        }
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let convertedString = String(data: data, encoding: .utf8)
+            implementation.tradPlusImpression(fromJSON: convertedString)
+            call.resolve()
+        } catch let error {
+            print(error.localizedDescription)
+            call.reject("Failed to get json from call")
+        }
+    }
+    
+    @objc func eventAdImpressionCAS(_ call: CAPPluginCall) {
+        guard let json = call.getAny("json") else {
+            call.reject("Failed to get json from call")
+            return
+        }
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let convertedString = String(data: data, encoding: .utf8)
+            implementation.casImpression(fromJSON: convertedString)
+            call.resolve()
+        } catch let error {
+            print(error.localizedDescription)
+            call.reject("Failed to get json from call")
+        }
+    }
+    
     @objc func updatePostbackConversionValue(_ call: CAPPluginCall) {
         guard let conversionValue = call.getInt("conversionValue") else {
             call.reject("Failed to get conversionValue from call")
@@ -215,5 +262,30 @@ public class TenjinPlugin: CAPPlugin {
             let data: [String: Any] = ["userId": userId]
             call.resolve(data)
         }
+    }
+    
+    @objc func setCacheEventSetting(_ call: CAPPluginCall) {
+        guard let setting = call.getBool("setting") else {
+            call.reject("Failed to get setting from call")
+            return
+        }
+        implementation.setCacheEventSetting(setting)
+        call.resolve()
+    }
+
+    @objc func getAnalyticsInstallationId(_ call: CAPPluginCall) {
+        if let installationId = implementation.getAnalyticsInstallationId() {
+            let data: [String: Any] = ["installationId": installationId]
+            call.resolve(data)
+        }
+    }
+    
+    @objc func setGoogleDMAParameters(_ call: CAPPluginCall) {
+        guard let adPersonalization = call.getBool("adPersonalization"), let adUserData = call.getBool("adUserData") else {
+            call.reject("Failed to get adPersonalization or adUserData from call")
+            return
+        }
+        implementation.setGoogleDMAParametersWithAdPersonalization(adPersonalization, adUserData: adUserData)
+        call.resolve()
     }
 }
