@@ -1,4 +1,4 @@
-# Tenjin Ionic Capacitor Plugin
+# Ionic Capacitor Tenjin Plugin
 
 # Summary
 
@@ -8,15 +8,6 @@ Tenjin's SDK allows users to track events and installs in their iOS apps. To lea
 
 On iOS:
 For AppTrackingTransparency, be sure to update your project `.plist` file and add `NSUserTrackingUsageDescription` along with the text message you want to display to users. This library is only available in iOS 14.0+. For further information on this, you can check our [iOS documentation](https://github.com/tenjin/tenjin-ios-sdk#-skadnetwork-and-ios-15-advertiser-postbacks)
-  
-On Android:
-You will need to add [Google's Install Referrer Library](https://developer.android.com/google/play/installreferrer/library.html) to your gradle dependencies. If you haven’t already installed the [Google Play Services](https://developers.google.com/android/guides/setup) you also need to add it
-```gradle
-dependencies {
-  classpath("com.android.installreferrer:installreferrer:1.1.2")
-  classpath("com.google.android.gms:play-services-analytics:17.0.0")
-}
-```
 
 # Plugin Integration
 
@@ -65,6 +56,21 @@ Tenjin.optIn(params: string[])
 Tenjin.optOut(params: string[])
 ```
 
+### OptIn and OptOut using CMP
+```typescript
+Tenjin.optInOutUsingCMP()
+```
+
+### Opt out of Google DMA parameters
+```typescript
+Tenjin.optOutGoogleDMA()
+```
+
+### Opt in of Google DMA parameters
+```typescript
+Tenjin.optInGoogleDMA()
+```
+
 ### Register transaction
 ```typescript
 transaction(productName: string, currencyCode: string, quantity: number, unitPrice: number)
@@ -80,29 +86,65 @@ Tenjin.eventWithName(name: string)
 Tenjin.eventWithNameAndValue(name: string, value: string)
 ```
 
+### Get attribution info
+```typescript
+Tenjin.getAttributionInfo()
+```
+Returns: `JSON`
+
 ### Append app subversion
 ```typescript
 Tenjin.appendAppSubversion(subversion: number)
 ```
 
-### <a id="ilrd"></a>Impression Level Ad Revenue Integration
+### Send AdMob impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionAdMob(json)
+```
+Parameters:
+- `json`: JSON
 
-Tenjin supports the ability to integrate with the Impression Level Ad Revenue (ILRD) feature from,
-- AppLovin
-- IronSource
-- HyperBid
-- AdMob
-- TopOn
+### Send AppLovin impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionAppLovin(json)
+```
+Parameters:
+- `json`: JSON
 
-This feature allows you to receive events which correspond to your ad revenue that is affected by each advertisement show to a user. To enable this feature, follow the below instructions.
+### Send HyperBid impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionHyperBid(json)
+```
+Parameters:
+- `json`: JSON
 
-:warning: **NOTE: ILRD is a paid feature, so please contact your Tenjin account manager to discuss the price at first before sending ILRD events.**
+### Send IronSource impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionIronSource(json)
+```
+Parameters:
+- `json`: JSON
 
-### <a id="attributionInfo"></a>Attribution Info
+### Send TopOn impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionTopOn(json)
+```
+Parameters:
+- `json`: JSON
 
-Tenjin supports retrieving of attributes, which are required for developers to get analytics installation id (previously known as tenjin reference id). This parameter can be used when there is no advertising id.
+### Send TradPlus impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionTradPlus(json)
+```
+Parameters:
+- `json`: JSON
 
-:warning: **NOTE: Attribution Info is a paid feature, so please contact your Tenjin account manager if you are interested in.**
+### Send CAS impression (ILRD)
+```javascript
+Tenjin.eventAdImpressionCAS(json)
+```
+Parameters:
+- `json`: JSON
 
 ### Customer User ID
 ```javascript
@@ -115,6 +157,21 @@ Parameters:
 Tenjin.getCustomerUserId()
 ```
 Returns: `string`
+
+### Analytics Installation ID
+
+```javascript
+Tenjin.getAnalyticsInstallationId()
+```
+Returns: `string`
+
+### Send Google DMA Parameters
+```javascript
+Tenjin.setGoogleDMAParametersWithAdPersonalization(adPersonalization, adUserData)
+```
+Parameters:
+- `adPersonalization`: Boolean
+- `adUserData`: Boolean
 
 ### Update SKAN Postback Conversion Value (iOS only)
 ```javascript

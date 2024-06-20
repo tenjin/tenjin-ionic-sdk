@@ -10,6 +10,9 @@ CAP_PLUGIN(TenjinPlugin, "Tenjin",
            CAP_PLUGIN_METHOD(optOut, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(optInParams, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(optOutParams, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(optInOutUsingCMP, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(optOutGoogleDMA, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(optInGoogleDMA, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(transaction, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventWithName, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventWithNameAndValue, CAPPluginReturnPromise);
@@ -20,9 +23,14 @@ CAP_PLUGIN(TenjinPlugin, "Tenjin",
            CAP_PLUGIN_METHOD(eventAdImpressionHyperBid, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventAdImpressionIronSource, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(eventAdImpressionTopOn, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(eventAdImpressionTradPlus, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(eventAdImpressionCAS, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(updatePostbackConversionValue, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(updatePostbackConversionValueCoarseValue, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(updatePostbackConversionValueCoarseValueLockWindow, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(setCustomerUserId, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(getCustomerUserId, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(setCacheEventSetting, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(getAnalyticsInstallationId, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(setGoogleDMAParameters, CAPPluginReturnPromise);
 )

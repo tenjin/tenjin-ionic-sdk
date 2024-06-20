@@ -38,6 +38,21 @@
     [TenjinSDK optOutParams:params];
 }
 
+- (void)optInOutUsingCMP
+{
+    [TenjinSDK optInOutUsingCMP];
+}
+
+- (void)optOutGoogleDMA
+{
+    [TenjinSDK optOutGoogleDMA];
+}
+
+- (void)optInGoogleDMA
+{
+    [TenjinSDK optInGoogleDMA];
+}
+
 - (void)transactionWithProductName:(NSString *)productName andCurrencyCode:(NSString *)currencyCode andQuantity:(NSInteger)quantity andUnitPrice:(NSDecimalNumber *)price
 {
     [TenjinSDK transactionWithProductName:productName andCurrencyCode:currencyCode andQuantity:quantity andUnitPrice:price];
@@ -88,6 +103,16 @@
     [TenjinSDK topOnImpressionFromJSON:jsonString];
 }
 
+- (void)tradPlusImpressionFromJSON:(NSString *)jsonString
+{
+    [TenjinSDK tradPlusImpressionFromJSON:jsonString];
+}
+
+- (void)casImpressionFromJSON:(NSString *)jsonString
+{
+    [TenjinSDK casImpressionFromJSON:jsonString];
+}
+
 - (void)updatePostbackConversionValue:(int)conversionValue
 {
     [TenjinSDK updatePostbackConversionValue:conversionValue];
@@ -113,5 +138,19 @@
     return [TenjinSDK getCustomerUserId];
 }
 
-@end
+- (void)setCacheEventSetting:(BOOL)setting
+{
+    [TenjinSDK setCacheEventSetting:setting];
+}
 
+- (NSString *)getAnalyticsInstallationId
+{
+    return [TenjinSDK getAnalyticsInstallationId];
+}
+
+- (void)setGoogleDMAParametersWithAdPersonalization:(BOOL)adPersonalization adUserData:(BOOL)adUserData
+{
+    [[TenjinSDK sharedInstance] setGoogleDMAParametersWithAdPersonalization:adPersonalization adUserData:adUserData];
+}
+
+@end
