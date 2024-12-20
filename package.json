@@ -1,6 +1,6 @@
 {
   "name": "ionic-capacitor-tenjin",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Tenjin Ionic Capacitor Plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
