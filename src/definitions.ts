@@ -39,6 +39,7 @@ export interface TenjinPlugin {
   setCustomerUserId(options: { userId: string }): Promise<void>;
   getCustomerUserId(): Promise<void>;
   setCacheEventSetting(options: { setting: boolean }): Promise<void>;
+  setEncryptRequestsSetting(options: { setting: boolean }): Promise<void>;
   getAnalyticsInstallationId(): Promise<string | null>;
   setGoogleDMAParameters(options: { adPersonalization: boolean, adUserData: boolean }): Promise<void>;
 }
