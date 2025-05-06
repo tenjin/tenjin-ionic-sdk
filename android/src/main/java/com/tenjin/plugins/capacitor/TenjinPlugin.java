@@ -173,6 +173,12 @@ public class TenjinPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void setEncryptRequestsSetting(PluginCall call) {
+        implementation.setEncryptRequestsSetting(call.getBoolean("setting"));
+        call.resolve();
+    }
+
+    @PluginMethod
     public void setCustomerUserId(PluginCall call) {
         implementation.setCustomerUserId(call.getString("userId"));
         call.resolve();

@@ -100,6 +100,10 @@ public class Tenjin {
         instance.setCacheEventSetting(setting);
     }
 
+    public void setEncryptRequestsSetting(Boolean setting) {
+        instance.setEncryptRequestsSetting(setting);
+    }
+
     public void setCustomerUserId(String userId) {
         instance.setCustomerUserId(userId);
     }

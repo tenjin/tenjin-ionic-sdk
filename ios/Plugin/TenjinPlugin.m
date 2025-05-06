@@ -31,6 +31,7 @@ CAP_PLUGIN(TenjinPlugin, "Tenjin",
            CAP_PLUGIN_METHOD(setCustomerUserId, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(getCustomerUserId, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(setCacheEventSetting, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(setEncryptRequestsSetting, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(getAnalyticsInstallationId, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(setGoogleDMAParameters, CAPPluginReturnPromise);
 )

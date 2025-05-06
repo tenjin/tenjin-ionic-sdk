@@ -143,6 +143,11 @@
     [TenjinSDK setCacheEventSetting:setting];
 }
 
+- (void)setEncryptRequestsSetting:(BOOL)setting
+{
+    [TenjinSDK setEncryptRequestsSetting:setting];
+}
+
 - (NSString *)getAnalyticsInstallationId
 {
     return [TenjinSDK getAnalyticsInstallationId];

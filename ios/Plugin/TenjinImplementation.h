@@ -41,6 +41,7 @@
 - (void)setCustomerUserId:(NSString *)userId;
 - (NSString *)getCustomerUserId;
 - (void)setCacheEventSetting:(BOOL)setting;
+- (void)setEncryptRequestsSetting:(BOOL)setting;
 - (NSString *)getAnalyticsInstallationId;
 - (void)setGoogleDMAParametersWithAdPersonalization:(BOOL)adPersonalization adUserData:(BOOL)adUserData;
 

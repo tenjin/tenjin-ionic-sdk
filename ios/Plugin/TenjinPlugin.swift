@@ -273,6 +273,15 @@ public class TenjinPlugin: CAPPlugin {
         call.resolve()
     }
 
+    @objc func setEncryptRequestsSetting(_ call: CAPPluginCall) {
+        guard let setting = call.getBool("setting") else {
+            call.reject("Failed to get setting from call")
+            return
+        }
+        implementation.setEncryptRequestsSetting(setting)
+        call.resolve()
+    }
+
     @objc func getAnalyticsInstallationId(_ call: CAPPluginCall) {
         if let installationId = implementation.getAnalyticsInstallationId() {
             let data: [String: Any] = ["installationId": installationId]
