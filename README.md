@@ -86,64 +86,30 @@ Tenjin.eventWithName(name: string)
 Tenjin.eventWithNameAndValue(name: string, value: string)
 ```
 
-### Get attribution info
+### LiveOps Campaigns
+Tenjin supports retrieving of attributes, which are required for developers to get analytics installation id (previously known as tenjin reference id). This parameter can be used when there is no advertising id.
+
 > [!WARNING]
 > Attribution Info is a paid feature, so please contact your Tenjin account manager if you are interested in.
-
-```typescript
-Tenjin.getAttributionInfo()
-```
-Returns: `JSON`
 
 ### Append app subversion
 ```typescript
 Tenjin.appendAppSubversion(subversion: number)
 ```
 ### Impression Level Revenue Data (ILRD)
+Tenjin supports the ability to integrate with the Impression Level Ad Revenue (ILRD) feature from,
+
+- AppLovin
+- Unity LevelPlay
+- AdMob
+- TopOn
+- Clever Ads Solutions (CAS)
+- TradPlus
+
+This feature allows you to receive events which correspond to your ad revenue is affected by each advertisement show to a user. To enable this feature, follow the below instructions.
+
 > [!WARNING]
 > ILRD is a paid feature, so please contact your Tenjin account manager to discuss the price at first before sending ILRD events.
-
-### Send AdMob impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionAdMob(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send AppLovin impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionAppLovin(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send IronSource impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionIronSource(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send TopOn impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionTopOn(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send TradPlus impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionTradPlus(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send CAS impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionCAS(json)
-```
-Parameters:
-- `json`: JSON
 
 ### Customer User ID
 ```javascript
