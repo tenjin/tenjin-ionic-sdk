@@ -87,6 +87,9 @@ Tenjin.eventWithNameAndValue(name: string, value: string)
 ```
 
 ### Get attribution info
+> [!WARNING]
+> Attribution Info is a paid feature, so please contact your Tenjin account manager if you are interested in.
+
 ```typescript
 Tenjin.getAttributionInfo()
 ```
@@ -96,6 +99,9 @@ Returns: `JSON`
 ```typescript
 Tenjin.appendAppSubversion(subversion: number)
 ```
+### Impression Level Revenue Data (ILRD)
+> [!WARNING]
+> ILRD is a paid feature, so please contact your Tenjin account manager to discuss the price at first before sending ILRD events.
 
 ### Send AdMob impression (ILRD)
 ```javascript
@@ -107,13 +113,6 @@ Parameters:
 ### Send AppLovin impression (ILRD)
 ```javascript
 Tenjin.eventAdImpressionAppLovin(json)
-```
-Parameters:
-- `json`: JSON
-
-### Send HyperBid impression (ILRD)
-```javascript
-Tenjin.eventAdImpressionHyperBid(json)
 ```
 Parameters:
 - `json`: JSON
