@@ -63,4 +63,17 @@ export class HomePage {
       "network_name": "AppLovin"
     }})
   }
+
+  async getUserProfile() {
+    const profile = await Tenjin.getUserProfileDictionary();
+    console.log('===> User Profile Data:');
+    Object.entries(profile).forEach(([key, value]) => {
+      console.log(`===> ${key}: ${value}`);
+    });
+  }
+
+  async resetUserProfile() {
+    await Tenjin.resetUserProfile();
+    console.log('===> User Profile has been reset');
+  }
 }
