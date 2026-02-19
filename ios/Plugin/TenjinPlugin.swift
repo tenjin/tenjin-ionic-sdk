@@ -297,4 +297,17 @@ public class TenjinPlugin: CAPPlugin {
         implementation.setGoogleDMAParametersWithAdPersonalization(adPersonalization, adUserData: adUserData)
         call.resolve()
     }
+
+    @objc func getUserProfileDictionary(_ call: CAPPluginCall) {
+        if let profileDict = implementation.getUserProfileAsDictionary() as? [String: Any] {
+            call.resolve(profileDict)
+        } else {
+            call.resolve([:])
+        }
+    }
+
+    @objc func resetUserProfile(_ call: CAPPluginCall) {
+        implementation.resetUserProfile()
+        call.resolve()
+    }
 }
