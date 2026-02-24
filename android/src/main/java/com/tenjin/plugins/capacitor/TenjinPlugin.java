@@ -223,4 +223,36 @@ public class TenjinPlugin extends Plugin {
         Log.d("TENJIN", "Method not available on Android");
         call.resolve();
     }
+
+    @PluginMethod
+    public void getUserProfileDictionary(PluginCall call) {
+        java.util.Map<String, Object> profileDict = implementation.getUserProfileDictionary();
+        if (profileDict != null) {
+            try {
+                JSObject result = new JSObject();
+                for (java.util.Map.Entry<String, Object> entry : profileDict.entrySet()) {
+                    Object value = entry.getValue();
+                    if (value instanceof java.util.Map) {
+                        result.put(entry.getKey(), new JSONObject((java.util.Map<?, ?>) value));
+                    } else if (value instanceof java.util.List) {
+                        result.put(entry.getKey(), new org.json.JSONArray((java.util.List<?>) value));
+                    } else {
+                        result.put(entry.getKey(), value);
+                    }
+                }
+                call.resolve(result);
+            } catch (Exception e) {
+                e.printStackTrace();
+                call.resolve(new JSObject());
+            }
+        } else {
+            call.resolve(new JSObject());
+        }
+    }
+
+    @PluginMethod
+    public void resetUserProfile(PluginCall call) {
+        implementation.resetUserProfile();
+        call.resolve();
+    }
 }
