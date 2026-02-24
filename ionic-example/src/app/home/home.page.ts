@@ -5,7 +5,6 @@ import { Tenjin } from 'ionic-capacitor-tenjin';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false,
 })
 export class HomePage {
 
@@ -63,18 +62,5 @@ export class HomePage {
       "publisher_revenue_micro": "0",
       "network_name": "AppLovin"
     }})
-  }
-
-  async getUserProfile() {
-    const profile = await Tenjin.getUserProfileDictionary();
-    console.log('===> User Profile Data:');
-    Object.entries(profile).forEach(([key, value]) => {
-      console.log(`===> ${key}: ${value}`);
-    });
-  }
-
-  async resetUserProfile() {
-    await Tenjin.resetUserProfile();
-    console.log('===> User Profile has been reset');
   }
 }

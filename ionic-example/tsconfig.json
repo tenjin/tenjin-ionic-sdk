@@ -1,4 +1,4 @@
-/* To learn more about this file see: https://angular.dev/config/tsconfig. */
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -12,17 +12,17 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
+    "target": "es2015",
+    "module": "es2020",
     "lib": [
-      "ES2022",
+      "es2018", 
       "dom"
     ],
-    "useDefineForClassFields": false,
-    "skipLibCheck": true
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

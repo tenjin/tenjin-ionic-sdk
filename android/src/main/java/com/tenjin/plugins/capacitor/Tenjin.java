@@ -119,12 +119,4 @@ public class Tenjin {
     public void setGoogleDMAParameters(boolean adPersonalization, boolean adUserData) {
         instance.setGoogleDMAParameters(adPersonalization, adUserData);
     }
-
-    public java.util.Map<String, Object> getUserProfileDictionary() {
-        return instance.getUserProfileDictionary();
-    }
-
-    public void resetUserProfile() {
-        instance.resetUserProfile();
-    }
 }

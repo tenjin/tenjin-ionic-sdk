@@ -158,14 +158,4 @@
     [[TenjinSDK sharedInstance] setGoogleDMAParametersWithAdPersonalization:adPersonalization adUserData:adUserData];
 }
 
-- (NSDictionary *)getUserProfileAsDictionary
-{
-    return [TenjinSDK getUserProfileAsDictionary];
-}
-
-- (void)resetUserProfile
-{
-    [TenjinSDK resetUserProfile];
-}
-
 @end

@@ -44,7 +44,5 @@
 - (void)setEncryptRequestsSetting:(BOOL)setting;
 - (NSString *)getAnalyticsInstallationId;
 - (void)setGoogleDMAParametersWithAdPersonalization:(BOOL)adPersonalization adUserData:(BOOL)adUserData;
-- (NSDictionary *)getUserProfileAsDictionary;
-- (void)resetUserProfile;
 
 @end
