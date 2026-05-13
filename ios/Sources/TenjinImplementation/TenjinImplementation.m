@@ -4,7 +4,20 @@
 //
 
 #import "TenjinImplementation.h"
+#if __has_include(<TenjinSDK/TenjinSDK.h>)
+#import <TenjinSDK/TenjinSDK.h>
+@interface TenjinSDK (IonicCapacitorTenjinILRD)
++ (void)adMobImpressionFromJSON:(NSString *)jsonString;
++ (void)appLovinImpressionFromJSON:(NSString *)jsonString;
++ (void)hyperBidImpressionFromJSON:(NSString *)jsonString;
++ (void)ironSourceImpressionFromJSON:(NSString *)jsonString;
++ (void)topOnImpressionFromJSON:(NSString *)jsonString;
++ (void)tradPlusImpressionFromJSON:(NSString *)jsonString;
++ (void)casImpressionFromJSON:(NSString *)jsonString;
+@end
+#else
 #import "TenjinSDK.h"
+#endif
 
 @implementation TenjinImplementation
 
