@@ -1,10 +1,49 @@
 import Foundation
 import Capacitor
+#if SWIFT_PACKAGE
+import TenjinImplementation
+#endif
 
 @objc(TenjinPlugin)
-public class TenjinPlugin: CAPPlugin {
+public class TenjinPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "TenjinPlugin"
+    public let jsName = "Tenjin"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "initialize", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "connect", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optIn", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optOut", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optInParams", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optOutParams", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optInOutUsingCMP", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optOutGoogleDMA", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "optInGoogleDMA", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "transaction", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventWithName", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventWithNameAndValue", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "appendAppSubversion", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getAttributionInfo", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionAdMob", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionAppLovin", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionHyperBid", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionIronSource", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionTopOn", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionTradPlus", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "eventAdImpressionCAS", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "updatePostbackConversionValue", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "updatePostbackConversionValueCoarseValue", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "updatePostbackConversionValueCoarseValueLockWindow", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setCustomerUserId", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getCustomerUserId", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setCacheEventSetting", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setEncryptRequestsSetting", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getAnalyticsInstallationId", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setGoogleDMAParameters", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getUserProfileDictionary", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "resetUserProfile", returnType: CAPPluginReturnPromise)
+    ]
     private let implementation = TenjinImplementation()
-    
+
     @objc func initialize(_ call: CAPPluginCall) {
         guard let sdkKey = call.getString("sdkKey") else {
             call.reject("Failed to get apiKey from call")

@@ -10,10 +10,11 @@ Pod::Spec.new do |s|
   s.homepage = package['repository']['url']
   s.author = package['author']
   s.source = { :git => package['repository']['url'], :tag => s.version.to_s }
-  s.source_files = 'ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}'
+  s.source_files = 'ios/Sources/**/*.{swift,h,m,c,cc,mm,cpp}'
+  s.public_header_files = 'ios/Sources/**/include/*.h'
   s.static_framework = true
-  s.ios.deployment_target  = '13.0'
+  s.ios.deployment_target = '14.0'
   s.dependency 'Capacitor'
-  s.dependency 'TenjinSDK', '1.15.1'
+  s.dependency 'TenjinSDK', '1.17.0'
   s.swift_version = '5.1'
 end
