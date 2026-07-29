@@ -3,14 +3,14 @@ import PackageDescription
 
 let package = Package(
     name: "IonicCapacitorTenjin",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS(.v14)],
     products: [
         .library(
             name: "IonicCapacitorTenjin",
             targets: ["IonicCapacitorTenjinPlugin"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", from: "8.0.0"),
+        .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", "7.0.0"..<"9.0.0"),
         .package(url: "https://github.com/tenjin/tenjin-ios-sdk.git", exact: "1.17.0")
     ],
     targets: [

@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/Sources/**/*.{swift,h,m,c,cc,mm,cpp}'
   s.public_header_files = 'ios/Sources/**/include/*.h'
   s.static_framework = true
-  s.ios.deployment_target = '15.0'
+  s.ios.deployment_target = '14.0'
   s.dependency 'Capacitor'
   s.dependency 'TenjinSDK', '1.17.0'
   s.swift_version = '5.1'
