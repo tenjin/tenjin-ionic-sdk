@@ -36,6 +36,7 @@ export interface TenjinPlugin {
   updatePostbackConversionValue(options: { conversionValue: number }): Promise<void>;
   updatePostbackConversionValueCoarseValue(options: { conversionValue: number, coarseValue: string }): Promise<void>;
   updatePostbackConversionValueCoarseValueLockWindow(options: { conversionValue: number, coarseValue: string, lockWindow: boolean }): Promise<void>;
+  handleOpenUrl(options: { url: string }): Promise<void>;
   setCustomerUserId(options: { userId: string }): Promise<void>;
   getCustomerUserId(): Promise<void>;
   setCacheEventSetting(options: { setting: boolean }): Promise<void>;

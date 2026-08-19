@@ -9,6 +9,37 @@ Tenjin's SDK allows users to track events and installs in their iOS apps. To lea
 On iOS:
 For AppTrackingTransparency, be sure to update your project `.plist` file and add `NSUserTrackingUsageDescription` along with the text message you want to display to users. This library is only available in iOS 14.0+. For further information on this, you can check our [iOS documentation](https://github.com/tenjin/tenjin-ios-sdk#-skadnetwork-and-ios-15-advertiser-postbacks)
 
+# Table of contents
+
+- [Integrate with an AI assistant (LLM)](#integrate-with-an-ai-assistant-llm)
+- [Plugin Integration](#plugin-integration)
+  - [Install](#install)
+    - [Import](#import)
+  - [Available methods](#available-methods)
+    - [Initialize](#initialize)
+    - [Connect](#connect)
+    - [OptIn](#optin)
+    - [OptOut](#optout)
+    - [OptIn with parameters](#optin-with-parameters)
+    - [OptOut with parameters](#optout-with-parameters)
+    - [OptIn and OptOut using CMP](#optin-and-optout-using-cmp)
+    - [Opt out of Google DMA parameters](#opt-out-of-google-dma-parameters)
+    - [Opt in of Google DMA parameters](#opt-in-of-google-dma-parameters)
+    - [Register transaction](#register-transaction)
+    - [Send event with name](#send-event-with-name)
+    - [Send event with name and value](#send-event-with-name-and-value)
+    - [LiveOps Campaigns](#liveops-campaigns)
+    - [Append app subversion](#append-app-subversion)
+    - [Impression Level Revenue Data (ILRD)](#impression-level-revenue-data-ilrd)
+    - [Re-engagement Deeplinks](#re-engagement-deeplinks)
+    - [Customer User ID](#customer-user-id)
+    - [Analytics Installation ID](#analytics-installation-id)
+    - [Retry/cache events and IAP](#retrycache-events-and-iap)
+    - [User Profile - LiveOps Metrics](#user-profile---liveops-metrics)
+    - [Send Google DMA Parameters](#send-google-dma-parameters)
+    - [Update SKAN Postback Conversion Value (iOS only)](#update-skan-postback-conversion-value-ios-only)
+- [Support](#support)
+
 # Integrate with an AI assistant (LLM)
 
 You can integrate the Tenjin Ionic SDK with the help of an AI assistant (Claude, Cursor, GitHub Copilot, etc.). Paste the following prompt into your assistant of choice:
@@ -112,6 +143,25 @@ Tenjin supports the ability to integrate with the Impression Level Ad Revenue (I
 - TopOn
 - Clever Ads Solutions (CAS)
 - TradPlus
+
+### Re-engagement Deeplinks
+Report the deeplink your app was opened with, so re-engagement clicks can be attributed to the ad network.
+```javascript
+Tenjin.handleOpenUrl({ url })
+```
+Parameters:
+- `url`: string
+
+Forward both the launch link and links received while the app is running:
+```javascript
+import { App } from '@capacitor/app';
+
+const launch = await App.getLaunchUrl();
+if (launch?.url) Tenjin.handleOpenUrl({ url: launch.url });
+
+App.addListener('appUrlOpen', (event) => Tenjin.handleOpenUrl({ url: event.url }));
+```
+On iOS this is safe to call before `initialize`. On Android, opens that start or recreate your activity are captured automatically, so this is only needed for links delivered to an already-running activity.
 
 ### Customer User ID
 ```javascript

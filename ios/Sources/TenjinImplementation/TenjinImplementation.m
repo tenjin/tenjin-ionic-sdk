@@ -141,6 +141,11 @@
     [TenjinSDK updatePostbackConversionValue:conversionValue coarseValue:coarseValue lockWindow:lockWindow];
 }
 
+- (void)handleOpenUrl:(NSString *)url
+{
+    [TenjinSDK handleOpenURLString:url];
+}
+
 - (void)setCustomerUserId:(NSString *)userId
 {
     [TenjinSDK setCustomerUserId:userId];
