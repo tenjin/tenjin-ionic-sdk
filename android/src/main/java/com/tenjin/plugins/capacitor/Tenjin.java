@@ -104,6 +104,13 @@ public class Tenjin {
         instance.setEncryptRequestsSetting(setting);
     }
 
+    public void handleOpenUrl(String url) {
+        if (instance == null || url == null) {
+            return;
+        }
+        instance.handleOpenUrl(url);
+    }
+
     public void setCustomerUserId(String userId) {
         instance.setCustomerUserId(userId);
     }

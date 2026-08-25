@@ -33,6 +33,7 @@ public class TenjinPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "updatePostbackConversionValue", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "updatePostbackConversionValueCoarseValue", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "updatePostbackConversionValueCoarseValueLockWindow", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "handleOpenUrl", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "setCustomerUserId", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "getCustomerUserId", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "setCacheEventSetting", returnType: CAPPluginReturnPromise),
@@ -287,6 +288,15 @@ public class TenjinPlugin: CAPPlugin, CAPBridgedPlugin {
         call.resolve()
     }
     
+    @objc func handleOpenUrl(_ call: CAPPluginCall) {
+        guard let url = call.getString("url") else {
+            call.reject("Failed to get url from call")
+            return
+        }
+        implementation.handleOpenUrl(url)
+        call.resolve()
+    }
+
     @objc func setCustomerUserId(_ call: CAPPluginCall) {
         guard let userId = call.getString("userId") else {
             call.reject("Failed to get userId from call")

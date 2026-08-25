@@ -38,6 +38,7 @@
 - (void)updatePostbackConversionValue:(int)conversionValue
                           coarseValue:(NSString *)coarseValue
                            lockWindow:(BOOL)lockWindow;
+- (void)handleOpenUrl:(NSString *)url;
 - (void)setCustomerUserId:(NSString *)userId;
 - (NSString *)getCustomerUserId;
 - (void)setCacheEventSetting:(BOOL)setting;

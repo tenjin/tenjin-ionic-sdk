@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.ios.deployment_target = '14.0'
   s.dependency 'Capacitor'
-  s.dependency 'TenjinSDK', '1.18.0'
+  s.dependency 'TenjinSDK', '1.19.0'
   s.swift_version = '5.1'
 end

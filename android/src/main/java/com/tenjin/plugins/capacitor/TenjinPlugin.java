@@ -179,6 +179,12 @@ public class TenjinPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void handleOpenUrl(PluginCall call) {
+        implementation.handleOpenUrl(call.getString("url"));
+        call.resolve();
+    }
+
+    @PluginMethod
     public void setCustomerUserId(PluginCall call) {
         implementation.setCustomerUserId(call.getString("userId"));
         call.resolve();
