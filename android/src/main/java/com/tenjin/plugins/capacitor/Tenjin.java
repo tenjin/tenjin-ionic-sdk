@@ -10,7 +10,11 @@ public class Tenjin {
 
     public TenjinSDK instance = null;
 
-    public void initialize(Context context, String sdkKey) {
+    public void initialize(Context context, String sdkKey, String pluginVersion) {
+        // must be set before getInstance so the first connect carries it
+        if (pluginVersion != null) {
+            TenjinSDK.setPluginVersion("ionic", pluginVersion);
+        }
         instance = TenjinSDK.getInstance(context, sdkKey);
     }
 

@@ -8,6 +8,7 @@
 @interface TenjinImplementation : NSObject
 
 - (void)initialize:(NSString *)sdkKey;
+- (void)setPluginVersion:(NSString *)version;
 - (void)connect;
 - (void)optIn;
 - (void)optOut;

@@ -18,7 +18,7 @@ public class TenjinPlugin extends Plugin {
 
     @PluginMethod
     public void initialize(PluginCall call) {
-        implementation.initialize(getContext(), call.getString("sdkKey"));
+        implementation.initialize(getContext(), call.getString("sdkKey"), call.getString("pluginVersion"));
         call.resolve();
     }
 

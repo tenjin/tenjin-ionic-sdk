@@ -26,6 +26,11 @@
     [TenjinSDK initialize:sdkKey];
 }
 
+- (void)setPluginVersion:(NSString *)version
+{
+    [TenjinSDK setPluginVersion:@"ionic" version:version];
+}
+
 - (void)connect
 {
     [TenjinSDK connect];

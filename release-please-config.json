@@ -4,7 +4,10 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "package-name": "ionic-capacitor-tenjin"
+      "package-name": "ionic-capacitor-tenjin",
+      "extra-files": [
+        "src/index.ts"
+      ]
     }
   },
   "include-v-in-tag": false,
