@@ -10,11 +10,14 @@ public class Tenjin {
 
     public TenjinSDK instance = null;
 
-    public void initialize(Context context, String sdkKey, String pluginVersion) {
+    // Reported to Tenjin as plugin_version. Updated by release-please; do not edit by hand.
+    // x-release-please-start-version
+    private static final String PLUGIN_VERSION = "2.1.0";
+    // x-release-please-end
+
+    public void initialize(Context context, String sdkKey) {
         // must be set before getInstance so the first connect carries it
-        if (pluginVersion != null) {
-            TenjinSDK.setPluginVersion("ionic", pluginVersion);
-        }
+        TenjinSDK.setPluginVersion("ionic", PLUGIN_VERSION);
         instance = TenjinSDK.getInstance(context, sdkKey);
     }
 

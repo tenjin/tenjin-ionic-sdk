@@ -12,7 +12,7 @@ interface JSONObject {
 interface JSONArray extends Array<JSONValue> { }
 
 export interface TenjinPlugin {
-  initialize(options: { sdkKey: string; pluginVersion?: string }): Promise<void>;
+  initialize(options: { sdkKey: string }): Promise<void>;
   connect(): Promise<void>;
   optIn(): Promise<void>;
   optOut(): Promise<void>;

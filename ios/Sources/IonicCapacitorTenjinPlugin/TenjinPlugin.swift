@@ -50,9 +50,6 @@ public class TenjinPlugin: CAPPlugin, CAPBridgedPlugin {
             call.reject("Failed to get apiKey from call")
             return
         }
-        if let pluginVersion = call.getString("pluginVersion") {
-            implementation.setPluginVersion(pluginVersion)
-        }
         implementation.initialize(sdkKey)
         call.resolve()
     }
