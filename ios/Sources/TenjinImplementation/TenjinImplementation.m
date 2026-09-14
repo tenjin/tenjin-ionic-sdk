@@ -21,8 +21,15 @@
 
 @implementation TenjinImplementation
 
+// Reported to Tenjin as plugin_version. Updated by release-please; do not edit by hand.
+// x-release-please-start-version
+static NSString *const kTenjinIonicPluginVersion = @"2.1.0";
+// x-release-please-end
+
 - (void)initialize:(NSString *)sdkKey
 {
+    // set before initialize so the first connect carries it
+    [TenjinSDK setPluginVersion:@"ionic" version:kTenjinIonicPluginVersion];
     [TenjinSDK initialize:sdkKey];
 }
 

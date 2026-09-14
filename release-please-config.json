@@ -4,7 +4,11 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "package-name": "ionic-capacitor-tenjin"
+      "package-name": "ionic-capacitor-tenjin",
+      "extra-files": [
+        "ios/Sources/TenjinImplementation/TenjinImplementation.m",
+        "android/src/main/java/com/tenjin/plugins/capacitor/Tenjin.java"
+      ]
     }
   },
   "include-v-in-tag": false,
