@@ -23,7 +23,7 @@
 
 // Reported to Tenjin as plugin_version. Updated by release-please; do not edit by hand.
 // x-release-please-start-version
-static NSString *const kTenjinIonicPluginVersion = @"2.1.0";
+static NSString *const kTenjinIonicPluginVersion = @"2.2.0";
 // x-release-please-end
 
 - (void)initialize:(NSString *)sdkKey
