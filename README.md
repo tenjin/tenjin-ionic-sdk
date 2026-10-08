@@ -38,6 +38,7 @@ For AppTrackingTransparency, be sure to update your project `.plist` file and ad
     - [User Profile - LiveOps Metrics](#user-profile---liveops-metrics)
     - [Send Google DMA Parameters](#send-google-dma-parameters)
     - [Update SKAN Postback Conversion Value (iOS only)](#update-skan-postback-conversion-value-ios-only)
+- [Google Ads On-Device Conversion Measurement (ICM / ODM)](#google-ads-on-device-conversion-measurement-icm--odm)
 - [Support](#support)
 
 # Integrate with an AI assistant (LLM)
@@ -277,6 +278,36 @@ Parameters:
 - `conversionValue`: number
 - `coarseValue`: string
 - `lockWindow`: boolean
+
+## Google Ads On-Device Conversion Measurement (ICM / ODM)
+
+> [!NOTE]
+> iOS only. Only needed if you run Google Ads campaigns for your iOS app.
+
+The Tenjin iOS SDK collects Google's on-device conversion data automatically when Google's `GoogleAdsOnDeviceConversion` SDK is in your app. There is no plugin method to call.
+
+1. Add Google's SDK to the iOS app:
+    - CocoaPods: in `ios/App/Podfile`, inside the `target 'App' do` block, add `pod 'GoogleAdsOnDeviceConversion'`, then run `npx cap sync ios`.
+    - Swift Package Manager: in Xcode, add `https://github.com/googleads/google-ads-on-device-conversion-ios-sdk` to the `App` target.
+
+    If your app uses Firebase Analytics, it already includes `GoogleAdsOnDeviceConversion` (check `ios/App/Podfile.lock`): don't add it again.
+
+2. Google's SDK needs a moment after Tenjin is initialized to produce its data. On iOS, call the first `connect()` at least 3 seconds after `initialize`:
+
+    ```typescript
+    import { Capacitor } from '@capacitor/core';
+    import { Tenjin } from 'ionic-capacitor-tenjin';
+
+    await Tenjin.initialize({ sdkKey: '<SDK_KEY>' });
+
+    if (Capacitor.getPlatform() === 'ios') {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
+
+    await Tenjin.connect();
+    ```
+
+    If you call `connect()` after the ATT prompt, make sure that call also happens at least 3 seconds after initialization. Later `connect()` calls need no delay.
 
 ## Support
 If you have any issues with the plugin integration or usage, please contact us to support@tenjin.com
