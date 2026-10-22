@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /ionic-example
+    schedule:
+      interval: weekly
+    # Security updates only: no scheduled version bumps for the example app
+    open-pull-requests-limit: 0
+    groups:
+      # Angular packages pin each other to the exact same version, so they must move together
+      angular:
+        applies-to: security-updates
+        patterns:
+          - "@angular/*"
+        exclude-patterns:
+          - "@angular/cli"
+          - "@angular-devkit/*"
