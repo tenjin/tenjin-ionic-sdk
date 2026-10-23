@@ -14,4 +14,3 @@ updates:
           - "@angular/*"
         exclude-patterns:
           - "@angular/cli"
-          - "@angular-devkit/*"
