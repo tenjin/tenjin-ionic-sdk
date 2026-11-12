@@ -13,6 +13,23 @@ This guide provides instructions for contributing to this Capacitor plugin.
     npm install
     ```
 
+The plugin uses Capacitor 6; `ionic-example` already uses Angular 21 and Capacitor 8.
+Install and build the plugin before installing the example, which links to the
+parent directory with `file:..`.
+
+Both package manifests override Lodash to `^4.18.1` because the Java formatter and
+parser pin `4.17.21`. npm only reads overrides from the project root, so the example
+must repeat this security floor when traversing the linked plugin.
+
+The example keeps its Angular build, lint, and Ionic toolkit devkit dependencies
+on Angular 21-compatible majors. Chokidar 5.0.0 is explicit at the example root
+to satisfy Angular 21's optional peer requirement. Keep dependency majors aligned:
+older devkit 19/20 peer trees require Chokidar 4 and cannot share that root
+dependency without making `npm ls --all` report invalid peer resolutions.
+
+The example also scopes security overrides to glob 13, minimatch 10, and SockJS's
+UUID dependency. Keep older compatible dependency lines outside those scopes.
+
 ### Scripts
 
 #### `npm run build`
