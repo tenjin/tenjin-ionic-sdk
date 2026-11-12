@@ -11,6 +11,8 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 @CapacitorPlugin(name = "Tenjin")
 public class TenjinPlugin extends Plugin {
 
@@ -43,7 +45,8 @@ public class TenjinPlugin extends Plugin {
     @PluginMethod
     public void optInParams(PluginCall call) {
         try {
-            String[] params = (String[]) call.getArray("params").toList().toArray();
+            List<String> paramsList = call.getArray("params").toList();
+            String[] params = paramsList.toArray(new String[0]);
             implementation.optIn(params);
             call.resolve();
         } catch (JSONException e) {
@@ -55,7 +58,8 @@ public class TenjinPlugin extends Plugin {
     @PluginMethod
     public void optOutParams(PluginCall call) {
         try {
-            String[] params = (String[]) call.getArray("params").toList().toArray();
+            List<String> paramsList = call.getArray("params").toList();
+            String[] params = paramsList.toArray(new String[0]);
             implementation.optOut(params);
             call.resolve();
         } catch (JSONException e) {
