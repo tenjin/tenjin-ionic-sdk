@@ -2,6 +2,7 @@ package com.tenjin.plugins.capacitor;
 
 import android.util.Log;
 
+import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -45,8 +46,10 @@ public class TenjinPlugin extends Plugin {
     @PluginMethod
     public void optInParams(PluginCall call) {
         try {
-            List<String> paramsList = call.getArray("params").toList();
-            String[] params = paramsList.toArray(new String[0]);
+            String[] params = getStringParams(call);
+            if (params == null) {
+                return;
+            }
             implementation.optIn(params);
             call.resolve();
         } catch (JSONException e) {
@@ -58,14 +61,38 @@ public class TenjinPlugin extends Plugin {
     @PluginMethod
     public void optOutParams(PluginCall call) {
         try {
-            List<String> paramsList = call.getArray("params").toList();
-            String[] params = paramsList.toArray(new String[0]);
+            String[] params = getStringParams(call);
+            if (params == null) {
+                return;
+            }
             implementation.optOut(params);
             call.resolve();
         } catch (JSONException e) {
             e.printStackTrace();
             call.reject(e.getLocalizedMessage());
         }
+    }
+
+    // Reads the "params" array as strings. Rejects the call and returns null when it is missing or
+    // holds a non-string element, instead of letting a NullPointerException or ArrayStoreException
+    // escape the JSONException catch.
+    private String[] getStringParams(PluginCall call) throws JSONException {
+        JSArray array = call.getArray("params");
+        if (array == null) {
+            call.reject("params must be an array of strings");
+            return null;
+        }
+        List<Object> list = array.toList();
+        String[] params = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            Object item = list.get(i);
+            if (!(item instanceof String)) {
+                call.reject("params must be an array of strings");
+                return null;
+            }
+            params[i] = (String) item;
+        }
+        return params;
     }
 
     @PluginMethod
