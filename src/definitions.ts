@@ -1,15 +1,10 @@
-type JSONValue =
-    | string
-    | number
-    | boolean
-    | JSONObject
-    | JSONArray;
+type JSONValue = string | number | boolean | JSONObject | JSONArray;
 
 interface JSONObject {
-    [x: string]: JSONValue;
+  [x: string]: JSONValue;
 }
 
-interface JSONArray extends Array<JSONValue> { }
+type JSONArray = JSONValue[];
 
 export interface TenjinPlugin {
   initialize(options: { sdkKey: string }): Promise<void>;
@@ -21,9 +16,17 @@ export interface TenjinPlugin {
   optInOutUsingCMP(): Promise<void>;
   optOutGoogleDMA(): Promise<void>;
   optInGoogleDMA(): Promise<void>;
-  transaction(options: { productName: string, currencyCode: string, quantity: number, unitPrice: number }): Promise<void>;
+  transaction(options: {
+    productName: string;
+    currencyCode: string;
+    quantity: number;
+    unitPrice: number;
+  }): Promise<void>;
   eventWithName(options: { name: string }): Promise<void>;
-  eventWithNameAndValue(options: { name: string, value: string }): Promise<void>;
+  eventWithNameAndValue(options: {
+    name: string;
+    value: string;
+  }): Promise<void>;
   appendAppSubversion(options: { version: number }): Promise<void>;
   getAttributionInfo(): Promise<JSONObject>;
   eventAdImpressionAdMob(options: { json: JSONObject }): Promise<void>;
@@ -33,16 +36,28 @@ export interface TenjinPlugin {
   eventAdImpressionTopOn(options: { json: JSONObject }): Promise<void>;
   eventAdImpressionTradPlus(options: { json: JSONObject }): Promise<void>;
   eventAdImpressionCAS(options: { json: JSONObject }): Promise<void>;
-  updatePostbackConversionValue(options: { conversionValue: number }): Promise<void>;
-  updatePostbackConversionValueCoarseValue(options: { conversionValue: number, coarseValue: string }): Promise<void>;
-  updatePostbackConversionValueCoarseValueLockWindow(options: { conversionValue: number, coarseValue: string, lockWindow: boolean }): Promise<void>;
+  updatePostbackConversionValue(options: {
+    conversionValue: number;
+  }): Promise<void>;
+  updatePostbackConversionValueCoarseValue(options: {
+    conversionValue: number;
+    coarseValue: string;
+  }): Promise<void>;
+  updatePostbackConversionValueCoarseValueLockWindow(options: {
+    conversionValue: number;
+    coarseValue: string;
+    lockWindow: boolean;
+  }): Promise<void>;
   handleOpenUrl(options: { url: string }): Promise<void>;
   setCustomerUserId(options: { userId: string }): Promise<void>;
   getCustomerUserId(): Promise<void>;
   setCacheEventSetting(options: { setting: boolean }): Promise<void>;
   setEncryptRequestsSetting(options: { setting: boolean }): Promise<void>;
   getAnalyticsInstallationId(): Promise<string | null>;
-  setGoogleDMAParameters(options: { adPersonalization: boolean, adUserData: boolean }): Promise<void>;
+  setGoogleDMAParameters(options: {
+    adPersonalization: boolean;
+    adUserData: boolean;
+  }): Promise<void>;
   getUserProfileDictionary(): Promise<JSONObject>;
   resetUserProfile(): Promise<void>;
 }

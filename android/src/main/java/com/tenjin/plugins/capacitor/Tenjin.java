@@ -1,9 +1,8 @@
 package com.tenjin.plugins.capacitor;
-import android.content.Context;
 
+import android.content.Context;
 import com.tenjin.android.AttributionInfoCallback;
 import com.tenjin.android.TenjinSDK;
-
 import org.json.JSONObject;
 
 public class Tenjin {
@@ -13,6 +12,7 @@ public class Tenjin {
     // Reported to Tenjin as plugin_version. Updated by release-please; do not edit by hand.
     // x-release-please-start-version
     private static final String PLUGIN_VERSION = "2.3.1";
+
     // x-release-please-end
 
     public void initialize(Context context, String sdkKey) {

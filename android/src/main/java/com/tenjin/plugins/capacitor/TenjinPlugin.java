@@ -1,18 +1,15 @@
 package com.tenjin.plugins.capacitor;
 
 import android.util.Log;
-
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
-
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 @CapacitorPlugin(name = "Tenjin")
 public class TenjinPlugin extends Plugin {
@@ -116,10 +113,10 @@ public class TenjinPlugin extends Plugin {
     @PluginMethod
     public void transaction(PluginCall call) {
         implementation.transaction(
-                call.getString("productName"),
-                call.getString("currencyCode"),
-                call.getInt("quantity"),
-                call.getDouble("unitPrice")
+            call.getString("productName"),
+            call.getString("currencyCode"),
+            call.getInt("quantity"),
+            call.getDouble("unitPrice")
         );
         call.resolve();
     }
