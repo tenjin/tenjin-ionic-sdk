@@ -1,0 +1,49 @@
+name: Example app
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-build:
+    name: Lint and build (ionic-example)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            ionic-example/package-lock.json
+
+      # The example depends on the plugin through "file:..", so build it first
+      - name: Build the plugin
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install example dependencies
+        working-directory: ionic-example
+        run: npm ci
+
+      - name: Lint
+        working-directory: ionic-example
+        run: npx ng lint
+
+      - name: Build
+        working-directory: ionic-example
+        run: npx ng build
