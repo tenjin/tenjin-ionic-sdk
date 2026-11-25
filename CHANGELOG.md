@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.2](https://github.com/tenjin/tenjin-ionic-sdk/compare/2.3.1...2.3.2) (2026-11-25)
+
+
+### Bug Fixes
+
+* patch SDK and example dependency graphs ([#50](https://github.com/tenjin/tenjin-ionic-sdk/issues/50)) ([40d64ba](https://github.com/tenjin/tenjin-ionic-sdk/commit/40d64bacc325bdf26c4939aa9f2375ffca2c7f21))
+* stop optInParams/optOutParams crashing with ClassCastException [TENJIN-30646] ([#54](https://github.com/tenjin/tenjin-ionic-sdk/issues/54)) ([a273b0b](https://github.com/tenjin/tenjin-ionic-sdk/commit/a273b0b1dd163ab4cf38192e82907dca7f041692))
+
 ## [2.3.1](https://github.com/tenjin/tenjin-ionic-sdk/compare/2.3.0...2.3.1) (2026-10-27)
 
 
