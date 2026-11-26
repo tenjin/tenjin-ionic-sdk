@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/tenjin/tenjin-ionic-sdk/compare/2.3.2...2.4.0) (2026-11-26)
+
+
+### Features
+
+* update Android SDK to 2.1.0 and iOS SDK to 1.21.0 ([#58](https://github.com/tenjin/tenjin-ionic-sdk/issues/58)) ([c23f1e0](https://github.com/tenjin/tenjin-ionic-sdk/commit/c23f1e0a29681352e5c8edccf4c6238fa75e4557))
+
 ## [2.3.2](https://github.com/tenjin/tenjin-ionic-sdk/compare/2.3.1...2.3.2) (2026-11-25)
 
 
